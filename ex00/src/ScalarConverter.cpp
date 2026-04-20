@@ -18,7 +18,7 @@ double* ScalarConverter::getDouble(const std::string& literal)
 
     return new double(value);
 }
-i + 1
+
 char* ScalarConverter::convertChar(const std::string& literal)
 {
     double* dbl = getDouble(literal);
