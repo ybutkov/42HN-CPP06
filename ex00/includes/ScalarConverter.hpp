@@ -14,13 +14,6 @@ class ScalarConverter
         ScalarConverter& operator=(const ScalarConverter &other) { (void)other; return *this; };
         ~ScalarConverter() {};
 
-		// static void formatString(const std::string& type, void* value);
-		// static void display(void* value, const std::string& type);
-		// static void ScalarConverter::display(char* value);
-		// static void ScalarConverter::display(int* value);
-		// static void ScalarConverter::display(float* value);
-		// static void ScalarConverter::display(double* value);
-
 		static ScalarPrinter printer;
 		static double* getDouble(const std::string& literal);
 		static char* convertChar(const std::string& literal);
