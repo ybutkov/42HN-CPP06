@@ -12,6 +12,8 @@ class ScalarPrinter
         ScalarPrinter(const ScalarPrinter &other) { (void)other; };
         ScalarPrinter& operator=(const ScalarPrinter &other) { (void)other; return *this; };
         ~ScalarPrinter() {};
+        
+        static std::string formatScalar(double value, bool isFloat);
 
 	public:
 		static void output(char* value);

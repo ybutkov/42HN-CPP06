@@ -13,7 +13,9 @@ double* ScalarConverter::getDouble(const std::string& literal)
     errno = 0;
     double value = std::strtod(literal.c_str(), &endptr);
 
-    if (errno == ERANGE || endptr == literal.c_str() || (*endptr != '\0' && std::string(endptr) != "f"))
+    if (errno == ERANGE 
+        || endptr == literal.c_str() 
+        || (*endptr != '\0' && !(*endptr == 'f' && *(endptr + 1) == '\0')))
         return nullptr;
 
     return new double(value);
@@ -21,6 +23,8 @@ double* ScalarConverter::getDouble(const std::string& literal)
 
 char* ScalarConverter::convertChar(const std::string& literal)
 {
+    if (literal.length() == 1 && !std::isdigit(static_cast<unsigned char>(literal[0])))
+        return new char(literal[0]);
     double* dbl = getDouble(literal);
     if (!dbl) return nullptr;
 

@@ -20,34 +20,22 @@ namespace {
 
 	void identify(Base* p)
 	{
-		try
+		if (dynamic_cast<A*>(p))
 		{
-			if (dynamic_cast<A*>(p))
-			{
-				std::cout << "Object pointed to A" << std::endl;
-				return ;
-			}
-
-			if (dynamic_cast<B*>(p))
-			{
-				std::cout << "Object pointed to B" << std::endl;
-				return ;
-			}
-
-			if (dynamic_cast<C*>(p))
-			{
-				std::cout << "Object pointed to C" << std::endl;
-				return ;
-			}
-			std::cout << "Unknown Base type" << std::endl;
+			std::cout << "Object pointed to A" << std::endl;
+			return ;
 		}
-		catch (const std::bad_cast& ex) {
-			std::cout << "Not Base, A, B, C type. Error: " << ex.what() << std::endl;
+		if (dynamic_cast<B*>(p))
+		{
+			std::cout << "Object pointed to B" << std::endl;
+			return ;
 		}
-		catch (const std::exception& ex) {
-			std::cout << "Error: " << ex.what() << std::endl;
+		if (dynamic_cast<C*>(p))
+		{
+			std::cout << "Object pointed to C" << std::endl;
+			return ;
 		}
-
+		std::cout << "Unknown Base type" << std::endl;
 	}
 
 	void identify(Base& p)
@@ -59,10 +47,6 @@ namespace {
 			return ;
 		}
 		catch (const std::bad_cast& ex) { }
-		catch (const std::exception& ex) {
-			std::cout << "Unexpected Error: " << ex.what() << std::endl;
-			return ;
-		}
 
 		try
 		{
@@ -71,10 +55,6 @@ namespace {
 			return ;
 		}
 		catch (const std::bad_cast& ex) { }
-		catch (const std::exception& ex) {
-			std::cout << "Unexpected Error: " << ex.what() << std::endl;
-			return ;
-		}
 
 		try
 		{
@@ -83,10 +63,6 @@ namespace {
 			return ;
 		}
 		catch (const std::bad_cast& ex) { }
-		catch (const std::exception& ex) {
-			std::cout << "Unexpected Error: " << ex.what() << std::endl;
-			return ;
-		}
 
 	}
 }
